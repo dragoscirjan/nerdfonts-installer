@@ -5,7 +5,7 @@
 # This is the main Taskfile for the generic (shell/PowerShell) template.
 # Common tasks are imported from .taskfiles/ modules.
 # ============================================================================
-version: '3'
+version: "3"
 
 includes:
   # ==========================================================================
@@ -28,7 +28,7 @@ tasks:
   # ==========================================================================
 
   build:
-    desc: 'Build project'
+    desc: "Build project"
     summary: |
       Build the project
 
@@ -55,7 +55,7 @@ tasks:
   # ==========================================================================
 
   clean:
-    desc: 'Clean all build artifacts'
+    desc: "Clean all build artifacts"
     summary: |
       Clean all build artifacts
 
@@ -82,21 +82,21 @@ tasks:
   # ==========================================================================
 
   format:
-    desc: 'Format code and fix issues'
+    desc: "Format code and fix issues"
     cmds:
       - task: quality:format:prettier
       - task: quality:format:ruff
       - cmd: echo "✅ Code format completed"
 
   format:check:
-    desc: 'Check code formatting without fixing'
+    desc: "Check code formatting without fixing"
     cmds:
       - task: quality:format:check:prettier
       - task: quality:format:check:ruff
       - cmd: echo "✅ Code format check completed"
 
   lint:
-    desc: 'Run linter and fix issues'
+    desc: "Run linter and fix issues"
     cmds:
       - task: quality:lint:eslint
       - task: quality:lint:pylint
@@ -105,7 +105,7 @@ tasks:
       - cmd: echo "✅ Linting completed"
 
   lint:check:
-    desc: 'Run linter without fixing'
+    desc: "Run linter without fixing"
     cmds:
       - task: quality:lint:check:eslint
       - task: quality:lint:check:pylint
@@ -114,12 +114,12 @@ tasks:
       - cmd: echo "✅ Linting check completed"
 
   lint-staged:
-    desc: 'Run linter on staged files and fix issues'
+    desc: "Run linter on staged files and fix issues"
     cmds:
       - task: quality:lint-staged
 
   duplicate-check:
-    desc: 'Check for duplicate code using jscpd'
+    desc: "Check for duplicate code using jscpd"
     cmds:
       - task: quality:duplicate-check
 
@@ -128,53 +128,53 @@ tasks:
   # ==========================================================================
 
   eslint:
-    desc: 'Run ESLint'
+    desc: "Run ESLint"
     cmds:
       - task: quality:eslint
         vars:
-          CLI_ARGS: '{{.CLI_ARGS}}'
+          CLI_ARGS: "{{.CLI_ARGS}}"
 
   prettier:
-    desc: 'Run Prettier'
+    desc: "Run Prettier"
     cmds:
       - task: quality:prettier
         vars:
-          CLI_ARGS: '{{.CLI_ARGS}}'
+          CLI_ARGS: "{{.CLI_ARGS}}"
 
   pylint:
-    desc: 'Run Pylint'
+    desc: "Run Pylint"
     cmds:
       - task: quality:pylint
         vars:
-          CLI_ARGS: '{{.CLI_ARGS}}'
+          CLI_ARGS: "{{.CLI_ARGS}}"
 
   ruff:
-    desc: 'Run Ruff'
+    desc: "Run Ruff"
     cmds:
       - task: quality:ruff
         vars:
-          CLI_ARGS: '{{.CLI_ARGS}}'
+          CLI_ARGS: "{{.CLI_ARGS}}"
 
   pwshlint_py:
-    desc: 'Run PSScriptAnalyzer via pwshlint.py'
+    desc: "Run PSScriptAnalyzer via pwshlint.py"
     cmds:
       - task: quality:pwshlint_py
         vars:
-          CLI_ARGS: '{{.CLI_ARGS}}'
+          CLI_ARGS: "{{.CLI_ARGS}}"
 
   shlint_py:
-    desc: 'Run ShellCheck via shlint.py'
+    desc: "Run ShellCheck via shlint.py"
     cmds:
       - task: quality:shlint_py
         vars:
-          CLI_ARGS: '{{.CLI_ARGS}}'
+          CLI_ARGS: "{{.CLI_ARGS}}"
 
   # ==========================================================================
   # Development Tools
   # ==========================================================================
 
   debug:
-    desc: 'Run application with debugger (gdb on Linux/macOS)'
+    desc: "Run application with debugger (gdb on Linux/macOS)"
     summary: |
       Run the application in debug mode
 
@@ -188,7 +188,7 @@ tasks:
       - cmd: echo "Running (Debug mode)..."
 
   run:
-    desc: 'Run application'
+    desc: "Run application"
     summary: |
       Build and run the application
 
@@ -210,7 +210,7 @@ tasks:
   # ==========================================================================
 
   docs:
-    desc: 'Build documentation'
+    desc: "Build documentation"
     summary: |
       Build project documentation
 
@@ -224,7 +224,7 @@ tasks:
         {{.__TF_MISE_E}} uv run mkdocs build
 
   docs:serve:
-    desc: 'Serve documentation locally with live reload'
+    desc: "Serve documentation locally with live reload"
     summary: |
       Serve documentation with live reload
 
@@ -244,7 +244,7 @@ tasks:
   # ==========================================================================
 
   test:
-    desc: 'Run tests'
+    desc: "Run tests"
     summary: |
       Run all tests
 
@@ -260,7 +260,7 @@ tasks:
 
   test:bats:
     aliases: [test:bash]
-    desc: 'Run Bats tests for bash scripts'
+    desc: "Run Bats tests for bash scripts"
     summary: |
       Run Bats tests for bash scripts
 
@@ -280,7 +280,7 @@ tasks:
     silent: true
 
   test:gen-coverage:
-    desc: 'Generate test coverage report'
+    desc: "Generate test coverage report"
     summary: |
       Generate test coverage report
 
@@ -295,7 +295,7 @@ tasks:
 
   test:pester:
     aliases: [test:powershell, test:pwsh]
-    desc: 'Run Pester tests for PowerShell scripts'
+    desc: "Run Pester tests for PowerShell scripts"
     summary: |
       Run Pester tests for PowerShell scripts
 
@@ -313,12 +313,12 @@ tasks:
   # ==========================================================================
 
   print:env:
-    desc: 'Print current build environment variables'
+    desc: "Print current build environment variables"
     cmds:
       - task: common:print:env
 
   pwsh:
-    desc: 'Run PowerShell scripts'
+    desc: "Run PowerShell scripts"
     summary: |
       Run a PowerShell command
 
@@ -343,7 +343,7 @@ tasks:
   # ==========================================================================
 
   validate:
-    desc: 'Run CI pipeline for validation'
+    desc: "Run CI pipeline for validation"
     summary: |
       Run full CI validation pipeline
 
@@ -369,7 +369,37 @@ tasks:
       - task: run
       - task: clean
       - task: test
-      - task: docs
+      - task: docsi
+
+  start:opencode:
+    aliases:
+      - start:oc
+      - oc
+    desc: Start OpenCode with all the dependencies it needs
+    summary: |
+      Start OpenCode with MCP servers configured
+
+      Required environment variables:
+        - GITHUB_TOKEN: GitHub personal access token (for GitHub MCP OAuth)
+        - TAVILY_API_KEY: Tavily API key (free tier: https://tavily.com)
+        - FIRECRAWL_API_KEY: Firecrawl API key (free tier: https://firecrawl.dev)
+
+      Note: context7 and grep MCPs don't require API keys.
+
+      Examples:
+        task start:opencode
+    requires:
+      vars:
+        - GITHUB_TOKEN
+        # - TAVILY_API_KEY
+        # - FIRECRAWL_API_KEY
+    cmds:
+      - cmd: |
+          {{if .GITHUB_TOKEN}}export GITHUB_TOKEN={{.GITHUB_TOKEN}}{{end}}
+          {{if .TAVILY_API_KEY}}export TAVILY_API_KEY={{.TAVILY_API_KEY}}{{end}}
+          {{if .FIRECRAWL_API_KEY}}export FIRECRAWL_API_KEY={{.FIRECRAWL_API_KEY}}{{end}}
+
+          npx -y opencode-ai@latest .
       - cmd: |
           echo ""
           echo "{{.__TF_HEADER_LINE}}"
